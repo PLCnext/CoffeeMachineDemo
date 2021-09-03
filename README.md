@@ -39,8 +39,8 @@ Please prepare your PLCnext Control as follows:
 8. To open the Web-based Management enter the following URL in web browser: https://<ip.of.your.plc>/wbm
 9. Install the balenaEngine app by using the Web-based Management option "PLCnext Apps" -> "Install App"
 10. Start the app after installation.
-11. Switch back to WinSCP and transfer "node_red_user_data.tar" and "Setup.sh" to /opt/plcnext .
-12. Make the shell script is executable. Therefor enter: <code> chmod +x Setup.sh </code> in PuTTY.
+11. Switch back to WinSCP and transfer "node_red_user_data.tar" and "setup.sh" to /opt/plcnext .
+12. Make the shell script is executable. Therefor enter: <code> chmod +x setup.sh </code> in PuTTY.
 
 ## Installation
 
