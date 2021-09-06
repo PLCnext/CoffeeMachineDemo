@@ -49,7 +49,11 @@ Execute the shell script: <code> ./Setup.sh </code>
 The installation of the software will take a while. You might see some warnings, but these can be ignored. 
 However, you should finally see that all software could be installed.
 
-After this, open the PLCnext Engineer demo project and change the IP address of your PLC back to 192.168.1.10.
+After this, open the PLCnext Engineer demo project. 
+- If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
+- If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
+
+Here change the IP address of your PLC back to 192.168.1.10.
 Also synchronize the PLC system time via the Cockpit option in PLCnext Engineer.
 Then download the demo project to the AXC F 2152.
 
