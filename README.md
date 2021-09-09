@@ -44,7 +44,7 @@ Please prepare your PLCnext Control as follows:
 
 ## Installation
 
-Execute the shell script: <code> ./Setup.sh </code>
+Execute the shell script: <code> ./setup.sh </code>
 
 The installation of the software will take a while. You might see some warnings, but these can be ignored. 
 However, you should finally see that all software could be installed.
