@@ -30,17 +30,19 @@ The follwoing software must be installed on the PC:
 
 Please prepare your PLCnext Control as follows:
 1. Reset your PLC. For this, push the reset button for 3 seconds during the boot process.
-2. Adjust the IP and gateway address of the PLC so that it is connected to the Internet.
-3. Create a WinSCP session, then start PuTTY and login as 'admin'.
-4. Create a 'root' user via : <code> sudo passwd root </code>
-5. Change to the 'root' user via: <code> su </code>
-6. To clean the SD cart from any existing Docker containers, run: <code> rm -r /media/rfs/rw/var/lib/balena </code>
-7. Download the [balenaEngine app](https://www.plcnextstore.com/963) container provided in the PLCnext Store to your computer.
-8. To open the Web-based Management enter the following URL in web browser: https://<ip.of.your.plc>/wbm
-9. Install the balenaEngine app by using the Web-based Management option "PLCnext Apps" -> "Install App"
-10. Start the app after installation.
-11. Switch back to WinSCP and transfer "node_red_user_data.tar" and "setup.sh" to /opt/plcnext .
-12. Make the shell script executable. Therefor enter: <code> chmod +x setup.sh </code> in PuTTY.
+2. Open PLCnext Engineer and create a new project via "File" > "New Project".
+3. Double-click on "Project" on the left side and then open the "Online Controllers" tab. Here you can scan the network, integrate the available PLC into your project and set the IP and gateway address to connect to the Internet.
+4. When connecting to the Internet, also make sure that the system time of the PLC is configured correctly for your router. This might be UTC or your local time. To do this, select "PLCnext" in the project tree and navigate to "Online parameters" > "Real-time clock". In the fields you can define date and time. Via the buttons in the menu of this window you can write and read the PLC time.
+5. Now create a WinSCP session, then start PuTTY and login as 'admin'.
+6. Create a 'root' user via : <code> sudo passwd root </code>
+7. Change to the 'root' user via: <code> su </code> . You will then have to enter the root password you just set.
+8. To clean the SD cart from any existing Docker containers, run: <code> rm -r /media/rfs/rw/var/lib/balena </code>
+9. Download the [balenaEngine app](https://www.plcnextstore.com/963) container provided in the PLCnext Store to your computer.
+10. To open the Web-based Management enter the following URL in web browser: https://<ip.of.your.plc>/wbm
+11. Install the balenaEngine app by using the Web-based Management option "PLCnext Apps" > "Install App"
+12. Start the app after installation.
+13. Switch back to WinSCP and transfer "node_red_user_data.tar" and "setup.sh" to /opt/plcnext .
+14. Make the shell script executable. Therefor enter: <code> chmod +x setup.sh </code> in PuTTY.
 
 ## Installation
 
@@ -54,7 +56,6 @@ After this, open the PLCnext Engineer demo project.
 - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
 
 Here change the IP address of your PLC back to 192.168.1.10.
-Also synchronize the PLC system time via the Cockpit option in PLCnext Engineer.
 Then download the demo project to the AXC F 2152.
 
 Open the Web-based Management and disable the User Authentication.
