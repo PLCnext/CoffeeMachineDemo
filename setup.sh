@@ -36,13 +36,20 @@ sudo -H -u admin bash -c "(crontab -l 2>/dev/null; echo '@reboot /usr/bin/python
 checkCommand 3 #
 
 # Install Node-RED as Docker container
-echo -e "\e[1;35m >> Step 4 - Install Node-RED, Node-RED flows and packages \e[0m \n" #
-sudo -H -u admin bash -c 'tar -xf node_red_user_data.tar' #
-sudo -H -u admin bash -c 'chmod 777 /opt/plcnext/node_red_user_data' #
-sudo -H -u admin bash -c 'rm /opt/plcnext/node_red_user_data.tar' #
+echo -e "\e[1;35m >> Step 4 - Install Node-RED \e[0m \n" #
 sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine volume create --name node_red_user_data' #
-sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine run -d -it --restart always -p 1880:1880 -p 1883:1883 -v /opt/plcnext/node_red_user_data:/data --name mynodered nodered/node-red' #
+sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine run -d -it --restart always -p 1880:1880 -v /opt/plcnext/node_red_user_data:/data --name mynodered nodered/node-red' #
 checkCommand 4 #
+
+# Install Node-RED nodes
+echo -e "\e[1;35m >> Step 5 - Install Node-RED nodes \e[0m \n" #
+sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine exec -i mynodered node-red-admin install node-red-node-email' #
+sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine exec -i mynodered node-red-admin install node-red-contrib-opcua' #
+sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine exec -i mynodered node-red-admin install node-red-node-ui-table' #
+sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine exec -i mynodered node-red-admin install node-red-contrib-moment' #
+sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine exec -i mynodered node-red-admin install node-red-dashboard' #
+sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine exec -i mynodered node-red-admin install node-red-contrib-ui-actions' #
+checkCommand 5 #
 
 echo -e '\e[1;32m ----------------------------------------------------------------------------- \e[0m' #
 echo -e "\033[1;33;40m >> Installation finished \e[0m" #
