@@ -6,7 +6,7 @@
 checkCommand(){ #
 
 	if [ $? -eq 0 ]; then #
-		echo -e "\e[1;32m >> Step $1 / 4 successfully done :) \e[0m \n" #
+		echo -e "\e[1;32m >> Step $1 / 5 successfully done :) \e[0m \n" #
 	else #
 		echo -e "\e[1;31m >> Installation was not successful\e[0m \n" #
 		exit #
