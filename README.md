@@ -41,17 +41,11 @@ Please prepare your PLCnext Control as follows:
 10. To open the Web-based Management enter the following URL in web browser: https://<ip.of.your.plc>/wbm
 11. Install the balenaEngine app by using the Web-based Management option "PLCnext Apps" > "Install App"
 12. Start the app after installation.
-13. Switch back to WinSCP and transfer "node_red_user_data.tar" and "setup.sh" to /opt/plcnext .
+13. Switch back to WinSCP and transfer "setup.sh" to /opt/plcnext .
 14. Make the shell script executable. Therefor enter: <code> chmod +x setup.sh </code> in PuTTY.
-
-## Installation
-
-Execute the shell script: <code> ./setup.sh </code>
-
-The installation of the software will take a while. You might see some warnings, but these can be ignored. 
-However, you should finally see that all software could be installed.
-
-After this, open the PLCnext Engineer demo project. 
+15. Run the installation script: <code> ./setup.sh </code> . The installation of the software will take a while. You might see some warnings, but these can be ignored. However, you should finally see that all software could be installed.
+16. Now switch to WinSCP and transfer the "flows.json" file to /opt/plcnext/node_red_user_data. To see this folder, it might be necessary to refresh the via Ctrl+R first.
+17. After this, open the PLCnext Engineer demo project. 
 - If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
 - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
 
