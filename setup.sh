@@ -37,6 +37,7 @@ checkCommand 3 #
 
 # Install Node-RED as Docker container
 echo -e "\e[1;35m >> Step 4 - Install Node-RED \e[0m \n" #
+sudo -H -u admin bash -c 'mkdir node_red_user_data' #
 sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine volume create --name node_red_user_data' #
 sudo -H -u admin bash -c '/opt/plcnext/appshome/bin/balena-engine run -d -it --restart always -p 1880:1880 -v /opt/plcnext/node_red_user_data:/data --name mynodered nodered/node-red' #
 checkCommand 4 #
