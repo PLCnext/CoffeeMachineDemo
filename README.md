@@ -44,18 +44,16 @@ Please prepare your PLCnext Control as follows:
 13. Switch back to WinSCP and transfer "setup.sh" to /opt/plcnext .
 14. Make the shell script executable. Therefor enter: <code> chmod +x setup.sh </code> in PuTTY.
 15. Run the installation script: <code> ./setup.sh </code> . The installation of the software will take a while. You might see some warnings, but these can be ignored. However, you should finally see that all software could be installed.
-16. Now switch to WinSCP and transfer the "flows.json" file to /opt/plcnext/node_red_user_data. To see this folder, it might be necessary to refresh the via Ctrl+R first.
-17. After this, open the PLCnext Engineer demo project. 
+16. Open your browser and enter the URL: http://<ip.of.your.plc>:1880. Node-RED should now be opened. 
+17. Here you can import the prepared flow. To do this, click on the menu button at the top right and select "Import". The "flows.json" available in this repository should now be specified here. After the import, the flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
+18. Open the PLCnext Engineer demo project. 
 - If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
 - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
 
-Here change the IP address of your PLC back to 192.168.1.10.
-Then download the demo project to the AXC F 2152.
-
-Open the Web-based Management and disable the User Authentication.
-
-Finally, restart the PLC and connect to the HMI via web browser. The URL is: https://192.168.1.10.
-You should now be able to see the start page.
+19. Here change the IP address of your PLC back to 192.168.1.10.
+20. Then download the demo project to the AXC F 2152.
+21. Open the Web-based Management and disable the User Authentication.
+22. Finally, restart the PLC and connect to the HMI via web browser. The URL is: https://192.168.1.10. You should now be able to see the start page.
 
 
 ## Project content
