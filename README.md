@@ -71,8 +71,6 @@ Below that, you have 12 tiles on different topics to choose from. By clicking on
 
 <b> Please note: </b> This is only a selection of some possibilities that can be used with PLCnext Control.
   
-In the bottom right corner there is a round download button, where you can download the PLCnext Engineer project as archive.
-
 ### Project
 
 Via the first tile you get a short overview of the demo project of a coffee machine.  
