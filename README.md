@@ -87,7 +87,7 @@ Your setting is displayed in the visualization within the control panel.
 Finally, you can start the process using the first button on the Starter Kit board.
 The panel shows the status of the coffee machine. After completion, the coffee machine returns to its initial state and you can can order another coffee.
 
-### Web-based Managament
+### Web-based Management
 
 This tile brings you directly to the Web-based Management, which offers a wide variety of configurations and provides diagnostic information.
 
