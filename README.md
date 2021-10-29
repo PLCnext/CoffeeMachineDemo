@@ -43,7 +43,7 @@ Please prepare your PLCnext Control as follows:
 12. Start the app after installation.
 13. Switch back to WinSCP and transfer "setup.sh" to /opt/plcnext .
 14. Make the shell script executable. Therefor enter: <code> chmod +x setup.sh </code> in PuTTY.
-15. Run the installation script: <code> ./setup.sh </code> . Because some software has to be downloaded from the Internet, the installation may take some time (approx. 30min) You might see some warnings, but these can be ignored. However, you should finally see that all software could be installed.
+15. Run the installation script: <code> ./setup.sh </code> . Because some software has to be downloaded from the Internet, the installation may take some time (approx. 30min). You might see some warnings, but these can be ignored. However, you should finally see that all software could be installed.
 16. Open your browser and enter the URL: http://<ip.of.your.plc>:1880. Node-RED should now be opened. 
 17. Here you can import the prepared flow. To do this, click on the menu button at the top right and select "Import". The "flows.json" available in this repository should now be specified here. After the import, the flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
 18. Open the PLCnext Engineer demo project. 
@@ -173,9 +173,9 @@ An example is given to you in relation to Node-RED, which was installed on the P
 ![Alt-Text](images/docker.PNG)
 
 You can view a Node-RED sample application by clicking on the button "Node-RED". Node-RED is used in the project to receive OPC UA events (alarms). A part of the shown Node-RED flow realizes an OPC UA client. 
-The received alarm messages are listed in the dashboard in tabular form and can also be sent via mail if the PLC is connected to the Internet. 
+The received alarm messages are listed in the dashboard in tabular form. 
 To try this out, it is a good idea to first open the Node-RED Flow to see if the client is connected. You should see a green icon under the "OPC UA Client" node together with the text "keepalive" - as shown in the screenshot in the visualization. 
-Then open the Dashboard view via "Alarms in Dashboard". The table will be empty at this point. 
+Then open the dashboard view via "Alarms in Dashboard". The table will be empty at this point. 
 
 Next, click on "Create alarm" to open the dialog for blocking the grinder. Select "Block grinder" to create the alarm. It should now be displayed in the dashboard. The same button in the HMI can be used to repair the grinder. This means that the alarm is no longer active, but it has not yet been confirmed. To do this, select "Alarm Reset".
 
@@ -183,7 +183,7 @@ Next, click on "Create alarm" to open the dialog for blocking the grinder. Selec
 
 After that, you should see two further messages in the dashboard: One that informs that the alarm is inactive but not confirmed, and another, which finally indicates the confirmation. 
 
-If you also want to send the messages by mail, then simply enter the recipient mail address in the "Recipient" field within the dashboard. Always when a new alarm message is created, you should receive a mail. However, depending on your internet connection and mailbox configuration, this may take a few seconds or minutes. If necessary, also have a look in your spam folder. The sender of the mail is: coffee.machine.simulation@gmail.com . 
+If you also want to send the alarm messages by mail, your PLC needs a connection to the Internet and the email node in Node-RED must be configured. At this point a mail server has to be defined. More information can be found here: https://flows.nodered.org/node/node-red-contrib-email-out. For the recipient you can use the "Recipient" input field within the Node-RED dashboard. Whenever a new alarm message is created, you should receive a mail. However, depending on your Internet connection and mailbox configuration, this may take a few seconds or minutes. If necessary, also have a look in your spam folder. 
 
 ### Data logging
 
