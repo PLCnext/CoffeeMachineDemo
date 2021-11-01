@@ -183,7 +183,7 @@ Next, click on "Create alarm" to open the dialog for blocking the grinder. Selec
 
 After that, you should see two further messages in the dashboard: One that informs that the alarm is inactive but not confirmed, and another, which finally indicates the confirmation. 
 
-If you also want to send the alarm messages by mail, your PLC needs a connection to the Internet and the email node in Node-RED must be configured. At this point a mail server has to be defined. More information can be found here: https://flows.nodered.org/node/node-red-contrib-email-out. For the recipient you can use the "Recipient" input field within the Node-RED dashboard. Whenever a new alarm message is created, you should receive a mail. However, depending on your Internet connection and mailbox configuration, this may take a few seconds or minutes. If necessary, also have a look in your spam folder. 
+If you want to send the alarm messages by mail, your PLC needs a connection to the Internet. When connecting to the Internet, ensure that security measures are taken to prevent unauthorized access. Additionally, the email node in Node-RED must be configured. At this point a mail server has to be defined.  More information can be found here: https://flows.nodered.org/node/node-red-contrib-email-out. For the recipient you can use the "Recipient" input field within the Node-RED dashboard. Whenever a new alarm message is created, you should receive a mail. However, depending on your Internet connection and mailbox configuration, this may take a few seconds or minutes. If necessary, also have a look in your spam folder. 
 
 ### Data logging
 
@@ -231,6 +231,8 @@ One cloud solution that can be accessed directly thanks to an integrated cloud c
 More information about proficloud.io will be available by clicking the corresponding button. Here you can see how data, here the available amount of coffee beans, can be visualized in a dashboard. If a minimum level is reached, an alarm can be generated automatically, which informs you by mail that coffee beans should be refilled.
 
 ![Alt-Text](images/proficloud_io_tsd.PNG)
+
+You can also try this yourself. For this purpose, your PLC requires a connection to the Internet. Make sure that security measures are taken to prevent unauthorized access to your PLC. To connect the AXC F 2152 to proficloud.io, the service must be enabled via Web-based Management. Furthermore, the PLC must be registered within the proficloud.io which can be done via UUID shown in the Web-based Management (but also printed on the PLC housing). Once the PLC is registered you can search for provided data. You will find here the amount of coffee beans which can be visualized in a dashboard.
 
 ## License
 
