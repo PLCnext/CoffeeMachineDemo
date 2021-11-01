@@ -15,7 +15,7 @@ Using a visualization, which is provided via the embedded web server of PLCnext 
 ### Hardware
 - Computer with Microsoft Windows operating system
 - PLCnext Starter Kit with AXC F 2152 (article no.: 1046568 or 1188165)
-- SD Flash 8GB PLCnext Memory (1061701)
+- SD Flash 2GB or 8GB PLCnext Memory (1043501 or 1061701)
 
 ### Software
 
@@ -52,7 +52,7 @@ Please prepare your PLCnext Control as follows:
 
 19. Here change the IP address of your PLC back to 192.168.1.10.
 20. Then download the demo project to the AXC F 2152.
-21. Disconnect your PLC from the Internet and open the Web-based Management to disable the User Authentication.
+21. For security reasons, disconnect your PLC from the Internet. Then open the Web-based Management to deactivate the User Authentication.
 22. Then restart the PLC.
 23. Finally, connect to the HMI via web browser. The URL is: https://192.168.1.10. You should now be able to see the start page.
 
