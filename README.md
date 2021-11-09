@@ -19,7 +19,7 @@ Using a visualization, which is provided via the embedded web server of PLCnext 
 
 ### Software
 
-The follwoing software must be installed on the PC:
+The following software must be installed on the PC:
 - WinSCP
 - PuTTY
 - HTML5 capable browser
@@ -96,7 +96,7 @@ This tile brings you directly to the Web-based Management, which offers a wide v
 
 Here you can see a screenshot of the PLCnext Community page as well as blocks with keywords for content that can be found within the PLCnext Community.
   
-If your PC has an internet connection, you can also open the PLCnext Community directly via the button "www.plcnext-communtity.net".
+If your PC has an Internet connection, you can also open the PLCnext Community directly via the button "www.plcnext-communtity.net".
 
 ![Alt-Text](images/plcnext_community.PNG)
 
