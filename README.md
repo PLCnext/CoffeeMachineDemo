@@ -86,7 +86,7 @@ For this, select directly in the visualization whether you want to fill a cup or
 Your setting is displayed in the visualization within the control panel. 
 
 Finally, you can start the process using the first button on the Starter Kit board.
-The panel shows the status of the coffee machine. After completion, the coffee machine returns to its initial state and you can can order another coffee.
+The panel shows the status of the coffee machine. After completion, the coffee machine returns to its initial state and you can order another coffee.
 
 ### Web-based Management
 
