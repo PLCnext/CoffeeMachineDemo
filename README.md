@@ -23,7 +23,7 @@ The following software must be installed on the PC:
 - WinSCP
 - PuTTY
 - HTML5 capable browser
-- PLCnext Engineer version 2021.6 or later
+- PLCnext Engineer version 2021.9 or later
 - PLCnext Control firmware version 2021.0.5 LTS or later
 
 ### Installation preparation
@@ -98,7 +98,7 @@ Here you can see a screenshot of the PLCnext Community page as well as blocks wi
   
 If your PC has an Internet connection, you can also open the PLCnext Community directly via the button "www.plcnext-communtity.net".
 
-![Alt-Text](images/plcnext_community.PNG)
+![Alt-Text](images/plcnext_community_2.PNG)
 
 ### PLCnext Store
 
@@ -224,7 +224,7 @@ If a client supports OPC UA Historical Access (HA), then it could make use of th
 
 PLCnext Control can be connected to different cloud solutions, e.g. via MQTT. Some of these possibilities can be found here in the "Clouds" section.
 
-![Alt-Text](images/clouds.PNG)
+![Alt-Text](images/clouds_2.PNG)
 
 One cloud solution that can be accessed directly thanks to an integrated cloud coupler and without additional programming is proficloud.io from Phoenix Contact.
 
