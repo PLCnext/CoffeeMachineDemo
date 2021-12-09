@@ -226,11 +226,15 @@ PLCnext Control can be connected to different cloud solutions, e.g. via MQTT. So
 
 ![Alt-Text](images/clouds_2.PNG)
 
-One cloud solution that can be accessed directly thanks to an integrated cloud coupler and without additional programming is proficloud.io from Phoenix Contact.
+One cloud solution that can be accessed directly thanks to an integrated cloud coupler and without additional programming is Proficloud.io from Phoenix Contact.
+More information to Proficloud.io will be available by clicking the corresponding button. 
 
-More information about proficloud.io will be available by clicking the corresponding button. Here you can see how data, here the available amount of coffee beans, can be visualized in a dashboard. If a minimum level is reached, an alarm can be generated automatically, which informs you by mail that coffee beans should be refilled.
+![Alt-Text](images/proficloud_io.PNG)
 
-![Alt-Text](images/proficloud_io_tsd.PNG)
+Here you can see some general information and which services are available for PLCnext Control.
+If you click on the "Time Series Data Service" button, you will see a screenshot of a dashboard that displays the available amount of coffee beans. If a minimum level is reached, an alarm can be generated automatically, which informs you by mail that coffee beans should be refilled.
+
+![Alt-Text](images/proficloud_io_tsd_2.PNG)
 
 You can also try this yourself. For this purpose, your PLC requires a connection to the Internet. Make sure that security measures are taken to prevent unauthorized access to your PLC. To connect the AXC F 2152 to proficloud.io, the service must be enabled via Web-based Management. Furthermore, the PLC must be registered within the proficloud.io which can be done via UUID shown in the Web-based Management (but also printed on the PLC housing). Once the PLC is registered you can search for provided data. You will find here the amount of coffee beans which can be visualized in a dashboard.
 
