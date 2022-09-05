@@ -37,7 +37,7 @@ Please prepare your PLCnext Control as follows:
 6. Create a 'root' user via : <code> sudo passwd root </code>
 7. Change to the 'root' user via: <code> su </code> . You will then have to enter the root password you just set.
 8. To clean the SD cart from any existing Docker containers, run: <code> rm -r /media/rfs/rw/var/lib/balena </code>
-9. Download the [balenaEngine app](https://www.plcnextstore.com/963) container provided in the PLCnext Store to your computer.
+9. Download the [balenaEngine app](https://www.plcnextstore.com/eu/app/963) container provided in the PLCnext Store to your computer.
 10. To open the Web-based Management enter the following URL in web browser: https://<ip.of.your.plc>/wbm
 11. Install the balenaEngine app by using the Web-based Management option "PLCnext Apps" > "Install App"
 12. Start the app after installation.
