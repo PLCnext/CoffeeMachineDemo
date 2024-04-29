@@ -15,47 +15,38 @@ Using a visualization, which is provided via the embedded web server of PLCnext 
 ### Hardware
 - Computer with Microsoft Windows operating system
 - PLCnext Starter Kit with AXC F 2152 (article no.: 1046568 or 1188165)
-- SD Flash 2GB or 8GB PLCnext Memory (1043501 or 1061701)
+- SD Flash with 8GB PLCnext Memory (1061701)
 
 ### Software
 
 The following software must be installed on the PC:
 - WinSCP
-- PuTTY
 - HTML5 capable browser
-- PLCnext Engineer version 2021.9 or later
-- PLCnext Control firmware version 2021.0.5 LTS or later
+- PLCnext Engineer version 2024.0.2 LTS or later
+- PLCnext Control firmware version 2024.0 LTS or later
 
 ### Installation preparation
 
 Please prepare your PLCnext Control as follows:
 1. Reset your PLC. For this, push the reset button for 3 seconds during the boot process.
-2. Open PLCnext Engineer and create a new project via "File" > "New Project".
-3. Double-click on "Project" on the left side and then open the "Online Controllers" tab. Here you can scan the network, integrate the available PLC into your project and set the IP and gateway address to connect to the Internet.
-4. When connecting to the Internet, also make sure that the system time of the PLC is configured correctly for your router. This might be UTC or your local time. To do this, select "PLCnext" in the project tree and navigate to "Online parameters" > "Real-time clock". In the fields you can define date and time. Via the buttons in the menu of this window you can write and read the PLC time.
-5. Now create a WinSCP session, then start PuTTY and login as 'admin'.
-6. Create a 'root' user via : <code> sudo passwd root </code>
-7. Change to the 'root' user via: <code> su </code> . You will then have to enter the root password you just set.
-8. To clean the SD cart from any existing Docker containers, run: <code> rm -r /media/rfs/rw/var/lib/balena </code>
-9. Download the [balenaEngine app](https://www.plcnextstore.com/eu/app/963) container provided in the PLCnext Store to your computer.
-10. To open the Web-based Management enter the following URL in web browser: https://<ip.of.your.plc>/wbm
-11. Install the balenaEngine app by using the Web-based Management option "PLCnext Apps" > "Install App"
-12. Start the app after installation.
-13. Switch back to WinSCP and transfer "setup.sh" to /opt/plcnext .
-14. Make the shell script executable. Therefor enter: <code> chmod +x setup.sh </code> in PuTTY.
-15. Run the installation script: <code> ./setup.sh </code> . Because some software has to be downloaded from the Internet, the installation may take some time (approx. 30min). You might see some warnings, but these can be ignored. However, you should finally see that all software could be installed.
-16. Open your browser and enter the URL: http://<ip.of.your.plc>:1880. Node-RED should now be opened. 
-17. Here you can import the prepared flow. To do this, click on the menu button at the top right and select "Import". The "flows.json" available in this repository should now be specified here. After the import, the flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
-18. Open the PLCnext Engineer demo project. 
-- If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
-- If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
-
-19. Here change the IP address of your PLC back to 192.168.1.10.
-20. Then download the demo project to the AXC F 2152.
-21. For security reasons, disconnect your PLC from the Internet. Then open the Web-based Management to deactivate the User Authentication.
-22. Then restart the PLC.
-23. Finally, connect to the HMI via web browser. The URL is: https://192.168.1.10. You should now be able to see the start page.
-
+2. Download the files that are provided here in this repository.
+3. Open the PLCnext Engineer demo project. 
+  - If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
+  - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
+4. Then download the demo project to the AXC F 2152.
+5. Then open the Web-based Management (WBM). For this, enter the following URL in web browser: https://192.168.1.10/wbm
+6. Install the Node-RED app, which is available here. This app already contains all the libraries required for the demo project. To install, go to "PLCnext Apps" > "Install app" in the WBM.
+7. Start the app after installation. *Please note:* The start process takes around 15-20 minutes. If you can access the WBM page again, the software is almost ready -> see next step.
+8. Restart your PLC, e.g. by switching off and switching on the power supply.
+9. After reboot, Node-RED can be access within a web browser using the URL: http://192.168.1.10:61880
+10. Use the "flow.json" file from this repository and import it to Node-RED. To do this, click on the menu button at the top right and select "Import". After the import, the flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
+11. In the OPC UA client node you will find the configuration for the communication with the server. Open this configuration, deactivate the "Use authentication" option, select it again and enter the password of your PLCnext Control. Then save your changes.
+12. Deploy your Node-RED flow.
+13. Now you can prepare the Python application. For this, install the Python app provided here via WBM.
+14. Create a WinSCP session and change to: /opt/plcnext/appshome/data/60000000001111/src.
+15. Open the Python script "MyScript.py" on your PLCnext Control and copy the Python code from the file provided here to the file on your PLC.
+16. Go to line 16 and enter the password of your PLCnext Control, where "password" is written. Then save all changes.
+17. Reboot the PLC. After this, the project installation is finished and you can access the visualization in the web browser: https://192.168.1.10.
 
 ## Project content
 
