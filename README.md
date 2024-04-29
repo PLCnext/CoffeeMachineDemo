@@ -30,22 +30,22 @@ The following software must be installed on the PC:
 Please prepare your PLCnext Control as follows:
 1. Reset your PLC. For this, push the reset button for 3 seconds during the boot process.
 2. Download the files that are provided here in this repository.
-3. Open the PLCnext Engineer demo project. 
-  - If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
-  - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
-4. Then download the demo project to the AXC F 2152.
-5. Then open the Web-based Management (WBM). For this, enter the following URL in web browser: https://192.168.1.10/wbm
-6. Install the Node-RED app, which is available here. This app already contains all the libraries required for the demo project. To install, go to "PLCnext Apps" > "Install app" in the WBM.
-7. Start the app after installation. *Please note:* The start process takes around 15-20 minutes. If you can access the WBM page again, the software is almost ready -> see next step.
-8. Restart your PLC, e.g. by switching off and switching on the power supply.
-9. After reboot, Node-RED can be access within a web browser using the URL: http://192.168.1.10:61880
-10. Use the "flow.json" file from this repository and import it to Node-RED. To do this, click on the menu button at the top right and select "Import". After the import, the flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
-11. In the OPC UA client node you will find the configuration for the communication with the server. Open this configuration, deactivate the "Use authentication" option, select it again and enter the password of your PLCnext Control. Then save your changes.
-12. Deploy your Node-RED flow.
-13. Now you can prepare the Python application. For this, install the Python app provided here via WBM.
-14. Create a WinSCP session and change to: /opt/plcnext/appshome/data/60000000001111/src.
-15. Open the Python script "MyScript.py" on your PLCnext Control and copy the Python code from the file provided here to the file on your PLC.
-16. Go to line 16 and enter the password of your PLCnext Control, where "password" is written. Then save all changes.
+3. Then download the demo project to the AXC F 2152.
+4. Open the Web-based Management (WBM). For this, enter the following URL in web browser: https://192.168.1.10/wbm
+5. Install the Node-RED app, which is available here. This app already contains all the libraries required for the demo project. To install, go to "PLCnext Apps" > "Install app" in the WBM.
+6. Start the app after installation. *Please note:* The start process takes around 15-20 minutes. If you can access the WBM page again, the software is almost ready -> see next step.
+7. Restart your PLC, e.g. by switching off and switching on the power supply.
+8. After reboot, Node-RED can be access within a web browser using the URL: http://192.168.1.10:61880
+9. Use the "flow.json" file from this repository and import it to Node-RED. To do this, click on the menu button at the top right and select "Import". After the import, the flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
+10. In the OPC UA client node you will find the configuration for the communication with the server. Open this configuration, deactivate the "Use authentication" option, select it again and enter the password of your PLCnext Control. Then save your changes.
+11. Deploy your Node-RED flow.
+12. Now you can prepare the Python application. For this, install the Python app provided here via WBM.
+13. Create a WinSCP session and change to: /opt/plcnext/appshome/data/60000000001111/src.
+14. Open the Python script "MyScript.py" on your PLCnext Control and copy the Python code from the file provided here to the file on your PLC.
+15. Go to line 16 and enter the password of your PLCnext Control, where "password" is written. Then save all changes.
+16. Open the PLCnext Engineer demo project. 
+    - If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
+    - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
 17. Reboot the PLC. After this, the project installation is finished and you can access the visualization in the web browser: https://192.168.1.10.
 
 ## Project content
