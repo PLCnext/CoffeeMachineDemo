@@ -13,7 +13,7 @@ import datetime
 import time
 
 # RSC connection
-secureInfoSupplier = lambda:("admin","password")
+secureInfoSupplier = lambda:("admin","password") # <- change password here
 device = Device("192.168.1.10", secureInfoSupplier=secureInfoSupplier)
 device.connect()
 
