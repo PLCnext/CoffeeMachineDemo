@@ -29,24 +29,23 @@ The following software must be installed on the PC:
 
 Please prepare your PLCnext Control as follows:
 1. Reset your PLC. For this, push the reset button for 3 seconds during the boot process.
-2. Download the files that are provided here in this repository.
-3. Then download the demo project to the AXC F 2152.
+2. Download the PLCnext Engineer demo project from this repository. You can open it with PLCnext Engineer 2024.0.2 LTS.
+    - If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
+    - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
+3. Write/send the demo project to the AXC F 2152.
 4. Open the Web-based Management (WBM). For this, enter the following URL in web browser: https://192.168.1.10/wbm
-5. Install the Node-RED app, which is available here. This app already contains all the libraries required for the demo project. To install, go to "PLCnext Apps" > "Install app" in the WBM.
+5. Install the Node-RED app, which is available here in this repo. This app already contains all the libraries required for the project. To install, go to "PLCnext Apps" > "Install app" in the WBM.
 6. Start the app after installation. *Please note:* The start process takes around 15-20 minutes. If you can access the WBM page again, the software is almost ready -> see next step.
 7. Restart your PLC, e.g. by switching off and switching on the power supply.
 8. After reboot, Node-RED can be access within a web browser using the URL: http://192.168.1.10:61880
 9. Use the "flow.json" file from this repository and import it to Node-RED. To do this, click on the menu button at the top right and select "Import". After the import, the flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
 10. In the OPC UA client node you will find the configuration for the communication with the server. Open this configuration, deactivate the "Use authentication" option, select it again and enter the password of your PLCnext Control. Then save your changes.
 11. Deploy your Node-RED flow.
-12. Now you can prepare the Python application. For this, install the Python app provided here via WBM.
+12. Now you can prepare the Python application. For this, install and start the Python app provided here via WBM. *Please note:* The start process takes around 20 minutes.
 13. Create a WinSCP session and change to: /opt/plcnext/appshome/data/60000000001111/src.
 14. Open the Python script "MyScript.py" on your PLCnext Control and copy the Python code from the file provided here to the file on your PLC.
 15. Go to line 16 and enter the password of your PLCnext Control, where "password" is written. Then save all changes.
-16. Open the PLCnext Engineer demo project. 
-    - If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
-    - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
-17. Reboot the PLC. After this, the project installation is finished and you can access the visualization in the web browser: https://192.168.1.10.
+16. Reboot the PLC. After this, the project installation is finished and you can access the visualization in the web browser: https://192.168.1.10.
 
 ## Project content
 
@@ -89,7 +88,7 @@ Here you can see a screenshot of the PLCnext Community page as well as blocks wi
   
 If your PC has an Internet connection, you can also open the PLCnext Community directly via the button "www.plcnext-communtity.net".
 
-![Alt-Text](images/plcnext_community_2.PNG)
+![Alt-Text](images/plcnext_community_3.PNG)
 
 ### PLCnext Store
 
@@ -99,7 +98,7 @@ In addition, it is possible to see which apps are installed on the PLC. This is 
   
 If your computer has an Internet connection, then you can also open the PLCnext Store by clicking on "www.plcnextstore.com". 
 
-![Alt-Text](images/plcnext_store.PNG)
+![Alt-Text](images/plcnext_store_2.PNG)
 
 ### IEC 61131
 
@@ -147,11 +146,9 @@ How debugging works without Matlab Simulink license is shown in the section "Deb
 
 In the section "Python Integration" you can find some general information and keywords about the usage of Python on PLCnext Control. 
 
-![Alt-Text](images/python.PNG)
+![Alt-Text](images/python_2.PNG)
 
-In the demo project a Python script is started automatically via "crontab" when booting the controller. It is used to provide the database of the data logger via HTTP. This can be initiated via the button "Data logger directory".
-
-<b> Attention: </b> Since the script is started at boot time, always when the PLCnext Engineer project has been sent to the controller, the PLC must be restarted. This is the only way to execute the script again. Therefore it is best to avoid sending projects and if possible just try to connect to the PLC to change into debug mode.
+In the demo project a the Python code is running within a Docker container that has been installed via app. It is used to provide the database of the data logger via HTTP. To do this, a C++ component (not in real time) copies the data logger file to the container volume every 10 seconds. In addition, a conversion to CSV is done in C++. This CSV file is also copied to the container volume. It enables the container to access these files, as a Docker container has no other way of reaching the host operating system. The Python script checks the status of the "Data logger directory" button. If this changes to TRUE, an HTTP socket is created and the data logger files (SQLite and CSV) become accessible via the browser.
 
 The Python code can be downloaded and opened in any text editor. If you are interested, use the "Python Script" button for downloading.
 
@@ -159,11 +156,11 @@ The Python code can be downloaded and opened in any text editor. If you are inte
 
 Here you will first get general information about using Docker on PLCnext Control.
 
-An example is given to you in relation to Node-RED, which was installed on the PLC as a Docker container.
+An example is given to you in relation to Node-RED, which was installed on the PLC as a container-based app.
 
 ![Alt-Text](images/docker.PNG)
 
-You can view a Node-RED sample application by clicking on the button "Node-RED". Node-RED is used in the project to receive OPC UA events (alarms). A part of the shown Node-RED flow realizes an OPC UA client. 
+You can see a Node-RED sample application by clicking on the button "Node-RED". Node-RED is used in the project to receive OPC UA events (alarms). A part of the shown Node-RED flow realizes an OPC UA client. 
 The received alarm messages are listed in the dashboard in tabular form. 
 To try this out, it is a good idea to first open the Node-RED Flow to see if the client is connected. You should see a green icon under the "OPC UA Client" node together with the text "keepalive" - as shown in the screenshot in the visualization. 
 Then open the dashboard view via "Alarms in Dashboard". The table will be empty at this point. 
@@ -172,7 +169,7 @@ Next, click on "Create alarm" to open the dialog for blocking the grinder. Selec
 
 ![Alt-Text](images/opc_ua_alarm.PNG)
 
-After that, you should see two further messages in the dashboard: One that informs that the alarm is inactive but not confirmed, and another, which finally indicates the confirmation. 
+After that, you should see two further messages in the dashboard: One informs that the alarm is inactive but not confirmed, and another, which finally indicates the confirmation. 
 
 If you want to send the alarm messages by mail, your PLC needs a connection to the Internet. When connecting to the Internet, ensure that security measures are taken to prevent unauthorized access. Additionally, the email node in Node-RED must be configured. At this point a mail server has to be defined.  More information can be found here: https://flows.nodered.org/node/node-red-contrib-email-out. For the recipient you can use the "Recipient" input field within the Node-RED dashboard. Whenever a new alarm message is created, you should receive a mail. However, depending on your Internet connection and mailbox configuration, this may take a few seconds or minutes. If necessary, also have a look in your spam folder. 
 
