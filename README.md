@@ -30,7 +30,7 @@ The following software must be installed on the PC:
 Please prepare your PLCnext Control as follows:
 
 **First steps:**
-1. Reset your PLC. For this, push the reset button during the boot process until RUN and FAIL LED light up. DO NOT PRESS THE RESET BUTTON FOR MORE THAN 20 SECONDS.
+1. Reset your PLC. For this, push the reset button during the boot process until RUN and FAIL LED light up. </br> DO NOT PRESS THE RESET BUTTON FOR MORE THAN 20 SECONDS.
 2. Download the PLCnext Engineer demo project from this repository. You can open it with PLCnext Engineer 2024.0.2 LTS.
     - If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
     - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
