@@ -28,24 +28,35 @@ The following software must be installed on the PC:
 ### Installation preparation
 
 Please prepare your PLCnext Control as follows:
+
+**First steps:**
 1. Reset your PLC. For this, push the reset button for 3 seconds during the boot process.
 2. Download the PLCnext Engineer demo project from this repository. You can open it with PLCnext Engineer 2024.0.2 LTS.
     - If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
     - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
 3. Write/send the demo project to the AXC F 2152.
-4. Open the Web-based Management (WBM). For this, enter the following URL in web browser: https://192.168.1.10/wbm
-5. Install the Node-RED app, which is available here in this repo. This app already contains all the libraries required for the project. To install, go to "PLCnext Apps" > "Install app" in the WBM.
-6. Start the app after installation. *Please note:* The start process takes around 15-20 minutes. If you can access the WBM page again, the software is almost ready -> see next step.
-7. Restart your PLC, e.g. by switching off and switching on the power supply.
-8. After reboot, Node-RED can be access within a web browser using the URL: http://192.168.1.10:61880
-9. Use the "flow.json" file from this repository and import it to Node-RED. To do this, click on the menu button at the top right and select "Import". After the import, the flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
-10. In the OPC UA client node you will find the configuration for the communication with the server. Open this configuration, deactivate the "Use authentication" option, select it again and enter the password of your PLCnext Control. Then save your changes.
-11. Deploy your Node-RED flow.
-12. Now you can prepare the Python application. For this, install and start the Python app provided here via WBM. *Please note:* The start process takes around 20 minutes.
-13. Create a WinSCP session and change to: /opt/plcnext/appshome/data/60000000001111/src.
-14. Open the Python script "MyScript.py" on your PLCnext Control and copy the Python code from the file provided here to the file on your PLC.
-15. Go to line 16 and enter the password of your PLCnext Control, where "password" is written. Then save all changes.
-16. Reboot the PLC. After this, the project installation is finished and you can access the visualization in the web browser: https://192.168.1.10.
+
+**For Node-RED:**
+1. Download the Node-RED app for the coffee machine demo from the PLCnext Store: https://www.plcnextstore.com/eu/app/1097 .This app already contains all the libraries required for the project.
+2. Now open the Web-based Management (WBM). For this, enter the following URL in web browser: https://192.168.1.10/wbm
+3. Install the Node-RED app in the WBM section "PLCnext Apps" > "Install app".
+4. Start the app after installation. *Please note:* The start process takes around 15-20 minutes. If you can access the WBM page again, the software is almost ready -> see next step.
+5. Restart your PLC, e.g. by switching off and switching on the power supply.
+6. After reboot, wait a few seconds. After a short waiting time Node-RED can be access within a web browser using the URL: http://192.168.1.10:61880
+7. Use the "flow.json" file from this repository and import it to Node-RED. To do this, click on the menu button at the top right and select "Import". The flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
+8. In the OPC UA client node you will find the configuration for the communication with the server. Open this server configuration, activate the "Use authentication" option and enter username and password of your PLCnext Control. Then save your changes.
+9. Deploy your Node-RED flow.
+
+**For Python:**
+1. Now you can prepare the Python application. For this, download the app from here: https://www.plcnextstore.com/eu/app/1096
+2. Install and start the Python app via WBM. *Please note:* The start process takes around 20 minutes.
+3. Create a WinSCP session and change to: /opt/plcnext/appshome/data/60002172000864/src.
+4. Open the Python script "MyScript.py" on your PLCnext Control and copy the Python code from the file provided here to the file on your PLC.
+5. Go to line 16 and enter the password of your PLCnext Control, where "password" is written. Then save all changes.
+
+**Last steps:**
+1. Reboot the PLC. 
+2. After this, the project installation is finished and you can access and use the visualization in the web browser: https://192.168.1.10.
 
 ## Project content
 
