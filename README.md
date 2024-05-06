@@ -37,7 +37,7 @@ Please prepare your PLCnext Control as follows:
 3. Write/send the demo project to the AXC F 2152.
 
 **For Node-RED:**
-1. Download the Node-RED app for the coffee machine demo from the PLCnext Store: https://www.plcnextstore.com/eu/app/1097 .This app already contains all the libraries required for the project.
+1. Download the Node-RED app for the coffee machine demo from the PLCnext Store: https://www.plcnextstore.com/eu/app/1097 . This app already contains all the libraries required for the project.
 2. Now open the Web-based Management (WBM). For this, enter the following URL in web browser: https://192.168.1.10/wbm
 3. Install the Node-RED app in the WBM section "PLCnext Apps" > "Install app".
 4. Start the app after installation. *Please note:* The start process takes around 15-20 minutes. If you can access the WBM page again, the software is almost ready -> see next step.
