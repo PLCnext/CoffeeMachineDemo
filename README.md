@@ -53,10 +53,7 @@ Please prepare your PLCnext Control as follows:
 3. Create a WinSCP session and change to: /opt/plcnext/appshome/data/60002172000864/src.
 4. Open the Python script "MyScript.py" on your PLCnext Control and copy the Python code from the file provided here to the file on your PLC.
 5. Go to line 16 and enter the password of your PLCnext Control, where "password" is written. Then save all changes.
-
-**Last steps:**
-1. Reboot the PLC. 
-2. After this, the project installation is finished and you can access and use the visualization in the web browser: https://192.168.1.10.
+6. After this, the project installation is finished and you can access and use the visualization in the web browser: https://192.168.1.10.
 
 ## Project content
 
