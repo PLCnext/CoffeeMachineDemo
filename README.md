@@ -49,7 +49,7 @@ Please prepare your PLCnext Control as follows:
 
 **For Python:**
 1. Now you can prepare the Python application. For this, download the app from here: https://www.plcnextstore.com/eu/app/1096
-2. Install and start the Python app via WBM. *Please note:* The start process takes around 20 minutes.
+2. Install and start the Python app via WBM. *Please note:* The start process takes around 20-30 minutes.
 3. Create a WinSCP session and change to: /opt/plcnext/appshome/data/60002172000864/src.
 4. Open the Python script "MyScript.py" on your PLCnext Control and copy the Python code from the file provided here to the file on your PLC.
 5. Go to line 16 and enter the password of your PLCnext Control, where "password" is written. Then save all changes.
