@@ -45,7 +45,7 @@ Please prepare your PLCnext Control as follows:
 6. After reboot, wait a few seconds. After a short waiting time Node-RED can be access within a web browser using the URL: http://192.168.1.10:61880
 7. Use the "flow.json" file from this repository and import it to Node-RED. To do this, click on the menu button at the top right and select "Import". The flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
 8. In the OPC UA client node you will find the configuration for the communication with the server. Open this server configuration (endpoint), activate the "Use authentication" option and enter username and password of your PLCnext Control. Then save your changes.
-9. Deploy your Node-RED flow.
+9. Deploy your Node-RED flow. The status of the "OPC UA Client" node should change to "keepalive" after a short wait.
 
 **For Python:**
 1. Now you can prepare the Python application. For this, download the app from here: https://www.plcnextstore.com/eu/app/1096
