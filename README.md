@@ -42,7 +42,7 @@ Please prepare your PLCnext Control as follows:
 3. Install the Node-RED app in the WBM section "PLCnext Apps" > "Install app".
 4. Start the app after installation. *Please note:* The start process takes around 15-20 minutes. If you can access the WBM page again, the software is almost ready -> see next step.
 5. Restart your PLC, e.g. by switching off and switching on the power supply.
-6. After reboot, wait a few seconds. After a short waiting time Node-RED can be access within a web browser using the URL: http://192.168.1.10:61880
+6. After reboot, wait a few seconds. After a short waiting time Node-RED can be access within a web browser using the URL: http://192.168.1.10:51880
 7. Use the "flow.json" file from this repository and import it to Node-RED. To do this, click on the menu button at the top right and select "Import". The flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
 8. In the OPC UA client node you will find the configuration for the communication with the server. Open this server configuration (endpoint), activate the "Use authentication" option and enter username and password of your PLCnext Control. Then save your changes.
 9. Deploy your Node-RED flow. The status of the "OPC UA Client" node should change to "keepalive" after a short wait.
