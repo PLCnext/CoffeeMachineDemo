@@ -1,0 +1,15 @@
+[Unit]
+Description=My Python Script Autostart
+#After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /opt/plcnext/myscript.py
+Restart=on-failure
+User=admin
+WorkingDirectory=/opt/plcnext
+StandardOutput=append:/opt/plcnext/logs/myscript.log
+StandardError=append:/opt/plcnext/logs/myscript.err
+
+[Install]
+WantedBy=default.target
