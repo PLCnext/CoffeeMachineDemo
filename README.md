@@ -22,8 +22,8 @@ Using a visualization, which is provided via the embedded web server of PLCnext 
 The following software must be installed on the PC:
 - WinSCP
 - HTML5 capable browser
-- PLCnext Engineer version 2024.0.2 LTS or later
-- PLCnext Control firmware version 2024.0 LTS or later
+- PLCnext Engineer version 2025.0.2 LTS or later
+- PLCnext Control firmware version 2025.0 LTS or later
 
 ### Installation preparation
 
@@ -36,24 +36,20 @@ Please prepare your PLCnext Control as follows:
     - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
 3. Write/send the demo project to the AXC F 2152.
 
-**For Node-RED:**
-1. Download the Node-RED app for the coffee machine demo from the PLCnext Store: https://www.plcnextstore.com/eu/app/1097 . This app already contains all the libraries required for the project.
-2. Now open the Web-based Management (WBM). For this, enter the following URL in web browser: https://192.168.1.10/wbm
-3. Install the Node-RED app in the WBM section "PLCnext Apps" > "Install app".
-4. Start the app after installation. *Please note:* The start process takes around 15-20 minutes. If you can access the WBM page again, the software is almost ready -> see next step.
-5. Restart your PLC, e.g. by switching off and switching on the power supply.
-6. After reboot, wait a few seconds. After a short waiting time Node-RED can be access within a web browser using the URL: http://192.168.1.10:61880
-7. Use the "flow.json" file from this repository and import it to Node-RED. To do this, click on the menu button at the top right and select "Import". The flow is available in a new worksheet. The first, empty worksheet can be deleted (by double-clicking on the tab and then "Delete").
-8. In the OPC UA client node you will find the configuration for the communication with the server. Open this server configuration (endpoint), activate the "Use authentication" option and enter username and password of your PLCnext Control. Then save your changes.
-9. Deploy your Node-RED flow. The status of the "OPC UA Client" node should change to "keepalive" after a short wait.
-
-**For Python:**
-1. Now you can prepare the Python application. For this, download the app from here: https://www.plcnextstore.com/eu/app/1096
-2. Install and start the Python app via WBM. *Please note:* The start process takes around 20-30 minutes.
-3. Create a WinSCP session and change to: /opt/plcnext/appshome/data/60002172000864/src.
-4. Open the Python script "MyScript.py" on your PLCnext Control and copy the Python code from the file provided here to the file on your PLC.
-5. Go to line 16 and enter the password of your PLCnext Control, where "password" is written. Then save all changes.
-6. After this, the project installation is finished and you can access and use the visualization in the web browser: https://192.168.1.10.
+**For Node-RED and Python:**
+1. Change the network settings of your PLC to have Internet access for it So IP address and default gateway may have to be changed for that purpose. You can check the Internet access by sending a ping to a well-known webpage via SSH.
+2. Now create a WinSCP session.
+3. Copy the following files to /opt/plcnext (on your PLC):
+    - myscript.py
+    - myscript.service
+    - setup.sh
+4. Start a PuTTy session and run these commands: <br>
+    `sudo passwd root` <- Creates a new root user (Enter the admin password first, then define a password for your root user) <br>
+   `su` <- To change to root (Enter the root password when prompted <br>
+   `chmod 775 setup.sh` <- Changes the permissions to allow execution <br>
+   `./setup.sh` <- Runs the installtion script <br>
+5. Wait until the installation process is finish. This may take around 15-20 minutes.
+6. Copy the flows.json file to /opt/plcnext/node_red_user_data
 
 ## Project content
 
@@ -156,7 +152,7 @@ In the section "Python Integration" you can find some general information and ke
 
 ![Alt-Text](images/python_2.PNG)
 
-In the demo project a the Python code is running within a Docker container that has been installed via app. It is used to provide the database of the data logger via HTTP. To do this, a C++ component (not in real time) copies the data logger file to the container volume every 10 seconds. In addition, a conversion to CSV is done in C++. This CSV file is also copied to the container volume. It enables the container to access these files, as a Docker container has no other way of reaching the host operating system. The Python script checks the status of the "Data logger directory" button. If this changes to TRUE, an HTTP socket is created and the data logger files (SQLite and CSV) become accessible via the browser.
+In the demo project a the Python code is running within a Docker container that has been installed via app. It is used to provide the database of the data logger via HTTP. To do this, a C++ component (not in real time) copies the data logger file to the container volume every 10 seconds. In addition, a conversion to CSV is done in C++. This CSV file is also copied to the container volume. It enables the container to access these files, as a Docker container has no other way of reaching the host operating system. The Python script checks the status of the "Data logger directory" button. If this changes to TRUE, an HTTP socket is created and the data logger files (SQLite) become accessible via the browser.
 
 The Python code can be downloaded and opened in any text editor. If you are interested, use the "Python Script" button for downloading.
 
@@ -178,8 +174,6 @@ Next, click on "Create alarm" to open the dialog for blocking the grinder. Selec
 ![Alt-Text](images/opc_ua_alarm.PNG)
 
 After that, you should see two further messages in the dashboard: One informs that the alarm is inactive but not confirmed, and another, which finally indicates the confirmation. 
-
-If you want to send the alarm messages by mail, your PLC needs a connection to the Internet. When connecting to the Internet, ensure that security measures are taken to prevent unauthorized access. Additionally, the email node in Node-RED must be configured. At this point a mail server has to be defined.  More information can be found here: https://flows.nodered.org/node/node-red-contrib-email-out. For the recipient you can use the "Recipient" input field within the Node-RED dashboard. Whenever a new alarm message is created, you should receive a mail. However, depending on your Internet connection and mailbox configuration, this may take a few seconds or minutes. If necessary, also have a look in your spam folder. 
 
 ### Data logging
 
