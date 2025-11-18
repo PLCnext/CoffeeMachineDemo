@@ -169,7 +169,7 @@ An example is given to you in relation to Node-RED, which was installed on the P
 
 You can see a Node-RED sample application by clicking on the button "Node-RED". Node-RED is used in the project to read in the amount of coffee beans and to visualize this value in a dashboard.
 
-The dashboard can be accessed via http://<ip.of.your.plc>:1880/ui
+The dashboard can be accessed via **http://<ip.of.your.plc>:1880/ui**
 
 ### Data logging
 
