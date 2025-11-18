@@ -1,0 +1,454 @@
+[
+    {
+        "id": "55c962618e7fa9c8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f01601720f6bb2ed",
+        "type": "inject",
+        "z": "55c962618e7fa9c8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [
+                "a6355743ab3fc2c4"
+            ]
+        ]
+    },
+    {
+        "id": "a6355743ab3fc2c4",
+        "type": "http request",
+        "z": "55c962618e7fa9c8",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://192.168.0.10/_pxc_api/api/variables?pathPrefix=Arp.Plc.Eclr/I&paths=NST_LevelControl1.OUTPORT_rCurrentCoffeeAmount,NST_LevelControl1.OUTPORT_xNoCoffeeBeans,NST_LevelControl1.INPORT_xStartButton",
+        "tls": "1835c3f3237690c5",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "f4289195efcec5cc",
+                "f1b0d88faf86ff9d",
+                "a7b107bb755c9e77"
+            ]
+        ]
+    },
+    {
+        "id": "f4289195efcec5cc",
+        "type": "debug",
+        "z": "55c962618e7fa9c8",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "f39a291b5906facf",
+        "type": "ui_table",
+        "z": "55c962618e7fa9c8",
+        "group": "ad936dda14b35d7e",
+        "name": "",
+        "order": 0,
+        "width": "20",
+        "height": "4",
+        "columns": [
+            {
+                "field": "id",
+                "title": "id",
+                "width": "10%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "timestamp",
+                "title": "timestamp",
+                "width": "40%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "text",
+                "title": "Coffee amount in %",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 1110,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f1b0d88faf86ff9d",
+        "type": "function",
+        "z": "55c962618e7fa9c8",
+        "name": "Coffee amount",
+        "func": "msg.payload = msg.payload.variables[0].value;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 140,
+        "wires": [
+            [
+                "a29d998b64311ca2"
+            ]
+        ]
+    },
+    {
+        "id": "a29d998b64311ca2",
+        "type": "rbe",
+        "z": "55c962618e7fa9c8",
+        "name": "",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "topi": "topic",
+        "x": 770,
+        "y": 140,
+        "wires": [
+            [
+                "a9d6225151e7100e",
+                "39af0df5fe1c06a2"
+            ]
+        ]
+    },
+    {
+        "id": "a9d6225151e7100e",
+        "type": "function",
+        "z": "55c962618e7fa9c8",
+        "name": "Create table entries",
+        "func": "var id=flow.get(\"lastId\") || 0;\nvar text = msg.payload;\nvar time = new Date();\n\n++id;\nmsg.payload={\ncommand:\"addRow\",\n    arguments: [\n    [\n        {\n        \"id\":id,\n        \"timestamp\":time,\n        \"text\":text+' '\n        }\n    ],\n    true\n],\nreturnPromise: true\n}\nflow.set(\"lastId\",id);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 140,
+        "wires": [
+            [
+                "f39a291b5906facf"
+            ]
+        ]
+    },
+    {
+        "id": "7035e182dd96269c",
+        "type": "ui_text",
+        "z": "55c962618e7fa9c8",
+        "group": "ad936dda14b35d7e",
+        "order": 1,
+        "width": "20",
+        "height": "3",
+        "name": "",
+        "label": "Current value in %:",
+        "format": "<font face='arial'><font size=6><font color={{fcolor}}>{{msg.payload}}",
+        "layout": "row-center",
+        "className": "",
+        "style": true,
+        "font": "Verdana,Verdana,Geneva,sans-serif",
+        "fontSize": "19",
+        "color": "#ffffff",
+        "x": 1370,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "917b8d1e3d71db60",
+        "type": "change",
+        "z": "55c962618e7fa9c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "fcolor",
+                "pt": "msg",
+                "to": "red",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1120,
+        "y": 220,
+        "wires": [
+            [
+                "7035e182dd96269c"
+            ]
+        ]
+    },
+    {
+        "id": "39af0df5fe1c06a2",
+        "type": "switch",
+        "z": "55c962618e7fa9c8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "btwn",
+                "v": "0",
+                "vt": "num",
+                "v2": "20",
+                "v2t": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "20",
+                "vt": "num",
+                "v2": "30",
+                "v2t": "num"
+            },
+            {
+                "t": "gt",
+                "v": "30",
+                "vt": "num"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 910,
+        "y": 260,
+        "wires": [
+            [
+                "917b8d1e3d71db60"
+            ],
+            [
+                "2385c18f0f324c76"
+            ],
+            [
+                "a75de53149517996"
+            ]
+        ]
+    },
+    {
+        "id": "2385c18f0f324c76",
+        "type": "change",
+        "z": "55c962618e7fa9c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "fcolor",
+                "pt": "msg",
+                "to": "orange",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1120,
+        "y": 260,
+        "wires": [
+            [
+                "7035e182dd96269c"
+            ]
+        ]
+    },
+    {
+        "id": "a75de53149517996",
+        "type": "change",
+        "z": "55c962618e7fa9c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "fcolor",
+                "pt": "msg",
+                "to": "green",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1120,
+        "y": 300,
+        "wires": [
+            [
+                "7035e182dd96269c"
+            ]
+        ]
+    },
+    {
+        "id": "4a993c3a4c0f7997",
+        "type": "ui_chart",
+        "z": "55c962618e7fa9c8",
+        "name": "",
+        "group": "9c0982ec5ef2e927",
+        "order": 0,
+        "width": "20",
+        "height": "10",
+        "label": "Start button activity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#b31e35",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 810,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a7b107bb755c9e77",
+        "type": "function",
+        "z": "55c962618e7fa9c8",
+        "name": "Start button",
+        "func": "var value = msg.payload.variables[2].value;\n\nif (value == true)\n{\n    msg.payload = 1;\n}\nelse {\n    msg.payload = 0;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 380,
+        "wires": [
+            [
+                "4a993c3a4c0f7997"
+            ]
+        ]
+    },
+    {
+        "id": "1835c3f3237690c5",
+        "type": "tls-config",
+        "name": "",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": false,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "ad936dda14b35d7e",
+        "type": "ui_group",
+        "name": "Coffee Amount",
+        "tab": "0cbed1dee6100ff2",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9c0982ec5ef2e927",
+        "type": "ui_group",
+        "name": "Start button activity",
+        "tab": "0cbed1dee6100ff2",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0cbed1dee6100ff2",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "01ec418e43526a8e",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-node-ui-table": "0.4.5",
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
