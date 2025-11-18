@@ -3,9 +3,9 @@ In this repository you can find a demo project where different features of PLCne
 
 ## Introduction
 
-This demo application shows the diversity and openness of the open control platform PLCnext Technology using the example of a coffee machine control.
+This demo application demonstrates the versatility and openness of the open control platform PLCnext Technology using the example of a coffee machine control.
 
-Using a visualization, which is provided via the embedded web server of PLCnext Control, explanations are given as well as some different possibilities of programming can be experienced.
+Through a visualization provided via the integrated web server of PLCnext Control, you will receive explanations and can practically experience various programming options.
 
 ![Alt-Text](images/coffee_machine.PNG)
 
@@ -14,7 +14,7 @@ Using a visualization, which is provided via the embedded web server of PLCnext 
 
 ### Hardware
 - Computer with Microsoft Windows operating system
-- PLCnext Starter Kit with AXC F 2152 (article no.: 1046568 or 1188165)
+- PLCnext Starter Kit with AXC F 2152 (article no.: 1188165)
 - SD Flash with 8GB PLCnext Memory (1061701)
 
 ### Software
@@ -22,34 +22,37 @@ Using a visualization, which is provided via the embedded web server of PLCnext 
 The following software must be installed on the PC:
 - WinSCP
 - HTML5 capable browser
-- PLCnext Engineer version 2025.0.2 LTS or later
+- PLCnext Engineer version 2025.0 LTS or later
 - PLCnext Control firmware version 2025.0 LTS or later
 
-### Installation preparation
+## Installation
 
 Please prepare your PLCnext Control as follows:
 
-**First steps:**
+### First steps:
 1. Reset your PLC. For this, push the reset button during the boot process until RUN and FAIL LED light up. </br> DO NOT PRESS THE RESET BUTTON FOR MORE THAN 20 SECONDS.
-2. Download the PLCnext Engineer demo project from this repository. You can open it with PLCnext Engineer 2024.0.2 LTS.
-    - If you're working with the Starter Kit with the article no. 1046568, please use: CoffeeMachine_oSK.pcweax
-    - If you have the Starter Kit with the article no. 1188165, please open: CoffeeMachine_nSK.pcweax
-3. Write/send the demo project to the AXC F 2152.
+2. Download the PLCnext Engineer demo project from this repository. You can open it with PLCnext Engineer 2025.0 LTS.
+3. Adjust the network settings if required.
+4. Write/send the demo project to the AXC F 2152.
 
-**For Node-RED and Python:**
-1. Change the network settings of your PLC to have Internet access for it So IP address and default gateway may have to be changed for that purpose. You can check the Internet access by sending a ping to a well-known webpage via SSH.
+### For Node-RED and Python:
+1. Configure the network settings of your PLC to enable Internet access. This may require adjusting the IP address and default gateway. To verify connectivity, you can send a ping to a well-known website via SSH.
 2. Now create a WinSCP session.
-3. Copy the following files to /opt/plcnext (on your PLC):
-    - myscript.py
-    - myscript.service
-    - setup.sh
+3. Copy the following files to **/opt/plcnext** (on your PLC):
+    - **myscript.py**
+    - **myscript.service**
+    - **setup.sh**
 4. Start a PuTTy session and run these commands: <br>
-    `sudo passwd root` <- Creates a new root user (Enter the admin password first, then define a password for your root user) <br>
-   `su` <- To change to root (Enter the root password when prompted <br>
+   `sudo passwd root` <- Creates a new root user (Enter the admin password first, then define a password for your root user) <br>
+   `su` <- Changes to root (Enter the root password when prompted <br>
    `chmod 775 setup.sh` <- Changes the permissions to allow execution <br>
    `./setup.sh` <- Runs the installtion script <br>
 5. Wait until the installation process is finish. This may take around 15-20 minutes.
-6. Copy the flows.json file to /opt/plcnext/node_red_user_data
+6. Copy the **flows.json** from this repo file to **/opt/plcnext/node_red_user_data**
+7. Open Node-RED by entering this URL in your browser: **http://<ip.of.your.plc>:1880**
+8. Open the node configuration of the http request node and change the IP address within the URL.
+9. Deploy your changes.
+10. Restart your PLCnext Control. When the RUN LED is green, your PLC is ready and you can open the visualization in the web browser by entering the PLC's IP address as URL.
 
 ## Project content
 
@@ -90,7 +93,7 @@ This tile brings you directly to the Web-based Management, which offers a wide v
 
 Here you can see a screenshot of the PLCnext Community page as well as blocks with keywords for content that can be found within the PLCnext Community.
   
-If your PC has an Internet connection, you can also open the PLCnext Community directly via the button "www.plcnext-communtity.net".
+If your computer has Internet connection, you can also open the PLCnext Community directly via the button "www.plcnext-community.net".
 
 ![Alt-Text](images/plcnext_community_3.PNG)
 
@@ -98,9 +101,9 @@ If your PC has an Internet connection, you can also open the PLCnext Community d
 
 Via this tile you can get a first overview of the PLCnext Store by means of the image and key points.  
   
-In addition, it is possible to see which apps are installed on the PLC. This is possible by clicking on "Apps on this PLC". By default, this demo project only uses of the belanaEngine app.
+In addition, it is possible to see which apps are installed on the PLC. This is possible by clicking on "Apps on this PLC". By default, this demo project uses no app.
   
-If your computer has an Internet connection, then you can also open the PLCnext Store by clicking on "www.plcnextstore.com". 
+If your computer has Internet connection, then you can open the PLCnext Store by clicking on "www.plcnextstore.com". 
 
 ![Alt-Text](images/plcnext_store_2.PNG)
 
@@ -152,7 +155,7 @@ In the section "Python Integration" you can find some general information and ke
 
 ![Alt-Text](images/python_2.PNG)
 
-In the demo project a the Python code is running within a Docker container that has been installed via app. It is used to provide the database of the data logger via HTTP. To do this, a C++ component (not in real time) copies the data logger file to the container volume every 10 seconds. In addition, a conversion to CSV is done in C++. This CSV file is also copied to the container volume. It enables the container to access these files, as a Docker container has no other way of reaching the host operating system. The Python script checks the status of the "Data logger directory" button. If this changes to TRUE, an HTTP socket is created and the data logger files (SQLite) become accessible via the browser.
+In the demo project a the Python code is executed by the pre-installed Python interpreter. It is used to provide the log files including the database of the data logger (see sub-folder "datalogger") via HTTP port 51880.
 
 The Python code can be downloaded and opened in any text editor. If you are interested, use the "Python Script" button for downloading.
 
@@ -160,24 +163,17 @@ The Python code can be downloaded and opened in any text editor. If you are inte
 
 Here you will first get general information about using Docker on PLCnext Control.
 
-An example is given to you in relation to Node-RED, which was installed on the PLC as a container-based app.
+An example is given to you in relation to Node-RED, which was installed on the PLC as a container running on Podman.
 
 ![Alt-Text](images/docker.PNG)
 
-You can see a Node-RED sample application by clicking on the button "Node-RED". Node-RED is used in the project to receive OPC UA events (alarms). A part of the shown Node-RED flow realizes an OPC UA client. 
-The received alarm messages are listed in the dashboard in tabular form. 
-To try this out, it is a good idea to first open the Node-RED Flow to see if the client is connected. You should see a green icon under the "OPC UA Client" node together with the text "keepalive" - as shown in the screenshot in the visualization. 
-Then open the dashboard view via "Alarms in Dashboard". The table will be empty at this point. 
+You can see a Node-RED sample application by clicking on the button "Node-RED". Node-RED is used in the project to read in the amount of coffee beans and to visualize this value in a dashboard.
 
-Next, click on "Create alarm" to open the dialog for blocking the grinder. Select "Block grinder" to create the alarm. It should now be displayed in the dashboard. The same button in the HMI can be used to repair the grinder. This means that the alarm is no longer active, but it has not yet been confirmed. To do this, select "Alarm Reset".
-
-![Alt-Text](images/opc_ua_alarm.PNG)
-
-After that, you should see two further messages in the dashboard: One informs that the alarm is inactive but not confirmed, and another, which finally indicates the confirmation. 
+The dashboard can be accessed via http://<ip.of.your.plc>:1880/ui
 
 ### Data logging
 
-This section first gives some general information about logging data. You will find a selection of possibilities that are available to you with the PLCnext Control. So data can be logged internally, i.e. directly on the controller, or in external databases.
+This section gives some general information about logging data. You will find a selection of possibilities that are available to you with the PLCnext Control, e.g. data can be logged internally, i.e. directly on the controller, or in external databases.
 
 ![Alt-Text](images/data_logging.PNG)
 
@@ -198,15 +194,10 @@ In "OPC UA Alarms" you have the possibility to cause an alarm by blocking the gr
 
 Also with a mouse click, you can repair the grinder again. This causes the alarm status to be set to "false". However, since no error confirmation has yet taken place, the coffee machine will remain in the "Error" state until "Reset alarm" is selected.
 
-The occurrence of an alarm, when it is no longer active ot when it is confirmed can also be seen within the Web-based Management. This can be explored via the "Alarm in WBM" button.
-
-In addition, a Node-RED flow, that is an OPC UA client, receives the alarm messages and outputs them in a dashboard. You can access this client dashboard via "Alarms on client side".
-For more information, see the [Docker] chapter
-
-<b> Attention: </b> The table in the dashboard lists only alarm messages received after opening the dashboard. 
+The occurrence of an alarm can be observed via the test client software "UA Expert" or within the Web-based Management in "Diagnostics" > "Notifications".
 
 Furthermore, it is possible to access historical data, if a variable is provided via OPC UA as well as processed by the data logger. 
-If a client supports OPC UA Historical Access (HA), then it could make use of this function. The client shown here is the test client of Unified Automation "UA Expert".
+If a client supports OPC UA Historical Access (HA), then it could make use of this function. The client shown here in the screenshot is the test client of Unified Automation "UA Expert".
 
 ![Alt-Text](images/opc_ua_historical_access.PNG)
 
