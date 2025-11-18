@@ -46,7 +46,7 @@ Please prepare your PLCnext Control as follows:
    `sudo passwd root` <- Creates a new root user (Enter the admin password first, then define a password for your root user) <br>
    `su` <- Changes to root (Enter the root password when prompted <br>
    `chmod 775 setup.sh` <- Changes the permissions to allow execution <br>
-   `./setup.sh` <- Runs the installtion script <br>
+   `./setup.sh` <- Runs the installation script <br>
 5. Wait until the installation process is finish. This may take around 15-20 minutes.
 6. Copy the **flows.json** from this repo file to **/opt/plcnext/node_red_user_data**
 7. Open Node-RED by entering this URL in your browser: **http://<ip.of.your.plc>:1880**
