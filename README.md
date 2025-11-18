@@ -153,7 +153,7 @@ How debugging works without Matlab Simulink license is shown in the section "Deb
 
 In the section "Python Integration" you can find some general information and keywords about the usage of Python on PLCnext Control. 
 
-![Alt-Text](images/python_2.PNG)
+![Alt-Text](images/python_2.png)
 
 In the demo project a the Python code is executed by the pre-installed Python interpreter. It is used to provide the log files including the database of the data logger (see sub-folder "datalogger") via HTTP port 51880.
 
