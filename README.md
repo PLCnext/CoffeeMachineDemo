@@ -190,7 +190,7 @@ On the subject of OPC UA, it is first shown which server configurations are poss
 
 In "OPC UA Alarms" you have the possibility to cause an alarm by blocking the grinder via mouse click. To do this, select the button "Block Grinder". You will then see that the alarm status changes to "true" and the coffee machine changes to the "Error" status.
 
-![Alt-Text](images/opc_ua_active_alarm.PNG)
+![Alt-Text](images/opc_ua_alarms.png)
 
 Also with a mouse click, you can repair the grinder again. This causes the alarm status to be set to "false". However, since no error confirmation has yet taken place, the coffee machine will remain in the "Error" state until "Reset alarm" is selected.
 
